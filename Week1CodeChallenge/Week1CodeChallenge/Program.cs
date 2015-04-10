@@ -10,17 +10,43 @@ namespace Week1CodeChallenge
     {
         static void Main(string[] args)
         {
+            Yodaizer("I like Code");
+            Console.ReadKey();
         }
         public static string FizzBuzz(int number)
         {
-            return string.Empty;
+            if (number % 3 == 0 && number % 5 == 0)
+            {
+                return ("FizzBuzz");
+            }
+            else if (number % 3 == 0)
+            {
+                return ("Buzz");
+            }
+            else if (number % 5 == 0)
+            {
+                return ("Fizz");
+            }
+            else
+            {
+                return number.ToString();
+            }
         }
         public static string Yodaizer(string text)
         {
-            return string.Empty;
+            string[] yodaArray = text.Split(' ');
+            Array.Reverse(yodaArray);
+            string yodaTalk = string.Join(" ", yodaArray);
+            return yodaTalk;
+        }
+        public static void TextStats(string input)
+        {
+
+
         }
         public static bool IsPrime(int number)
         {
+            
             return true;
         }
         public static string DashInsert(int number)
