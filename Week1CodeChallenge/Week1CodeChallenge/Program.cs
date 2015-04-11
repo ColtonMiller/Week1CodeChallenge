@@ -28,6 +28,7 @@ namespace Week1CodeChallenge
 
             }
             Console.WriteLine(DashInsert(454793));
+            Console.WriteLine(DashInsert(8675309));
             Console.ReadKey();
         }
         public static string FizzBuzz(int number)
@@ -124,13 +125,18 @@ namespace Week1CodeChallenge
             }
             for (int i = 0; i < numberString.Length; i++)
             {
+                
                 int previous = i - 1;
                 if (numberList[i] != 0 && i > 0)
                 {
-                    if (numberList[previous] % 2 != 0 && numberList[i] % 2 != 0)
+                    if (numberList[previous] == '-' && i > 0)
+                    {
+                        previous++;
+                        i++;
+                    }
+                    if (numberList[previous] % 2 != 0 && numberList[i] % 2 != 0 && char.IsDigit(numberList[previous]))
                     {
                         numberList.Insert(i, '-');
-                        previous--;
                     }
                 }
 
