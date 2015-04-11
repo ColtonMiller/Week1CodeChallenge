@@ -11,7 +11,6 @@ namespace Week1CodeChallenge
         static void Main(string[] args)
         {
             Yodaizer("I like Code");
-            Console.ReadKey();
         }
         public static string FizzBuzz(int number)
         {
@@ -38,7 +37,7 @@ namespace Week1CodeChallenge
             Array.Reverse(yodaArray);
             if (yodaArray.Length == 3)
             {
-                string[] tempArray   
+ 
             }
             string yodaTalk = string.Join(" ", yodaArray);
             return yodaTalk;
@@ -46,6 +45,11 @@ namespace Week1CodeChallenge
         public static void TextStats(string input)
         {
             int counter = 0;
+            int counterVowel = 0;
+            int counterConsonants = 0;
+            int counterSpecialChar = 0;
+            var vowel = new HashSet<char> {'a', 'e', 'i', 'o', 'u'};
+            var specialChar = new HashSet<char> { '.', ',', ' ', '?' };
 
             for (int i = 0; i < input.Length; i++)
             {
@@ -60,11 +64,29 @@ namespace Week1CodeChallenge
                 counter++;
             }
             Console.WriteLine("Number of words: {0}", counter);
-
+            string loweredInput = input.ToLower();
+            for (int i = 0; i < loweredInput.Length ; i++)
+            {
+                if (char.IsLetter(loweredInput[i]) && vowel.Contains(loweredInput[i]))
+                {
+                    counterVowel++;
+                }
+                else if (char.IsLetter(loweredInput[i]))
+                {
+                    counterConsonants++;
+                }
+            }
+            Console.WriteLine("Number of vowels: {0}", counterVowel);
+            Console.WriteLine("Number of consonants: {0}", counterConsonants);
             for (int i = 0; i < input.Length; i++)
             {
-                if (input[i] =
+                if (specialChar.Contains(input[i]))
+                {
+                    counterSpecialChar++;
+                }
             }
+            Console.WriteLine("Number of special characters: {0}", counterSpecialChar);
+
         }
         public static bool IsPrime(int number)
         {
