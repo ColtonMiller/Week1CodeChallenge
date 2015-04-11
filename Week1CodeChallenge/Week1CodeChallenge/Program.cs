@@ -10,7 +10,24 @@ namespace Week1CodeChallenge
     {
         static void Main(string[] args)
         {
-            Yodaizer("I like Code");
+            Console.WriteLine(Yodaizer("I like code"));
+            TextStats("I think this function should work. I'm not sure what do you think? if it does, great, if not, then I need to fix it");
+            for (int i = 0; i <= 25; i++)
+            {
+                if (i % 2 != 0)
+                {
+                    if (IsPrime(i) == true)
+                    {
+                        Console.WriteLine("{0} is a prime number", i);
+                    }
+                    else
+                    {
+                        Console.WriteLine(i);
+                    }
+                }
+
+            }
+            Console.ReadKey();
         }
         public static string FizzBuzz(int number)
         {
@@ -35,10 +52,6 @@ namespace Week1CodeChallenge
         {
             string[] yodaArray = text.Split(' ');
             Array.Reverse(yodaArray);
-            if (yodaArray.Length == 3)
-            {
- 
-            }
             string yodaTalk = string.Join(" ", yodaArray);
             return yodaTalk;
         }
@@ -90,8 +103,15 @@ namespace Week1CodeChallenge
         }
         public static bool IsPrime(int number)
         {
-            
+            for (int i = 2; i < number; i++)
+            {
+                if (number % i == 0)
+                {
+                    return false;
+                }
+            }
             return true;
+
         }
         public static string DashInsert(int number)
         {
