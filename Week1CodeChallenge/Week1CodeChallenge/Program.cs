@@ -33,6 +33,10 @@ namespace Week1CodeChallenge
         }
         public static string FizzBuzz(int number)
         {
+            if (number < 0)
+            {
+                Console.WriteLine("");
+            }
             if (number % 3 == 0 && number % 5 == 0)
             {
                 return ("FizzBuzz");
@@ -53,6 +57,17 @@ namespace Week1CodeChallenge
         public static string Yodaizer(string text)
         {
             string[] yodaArray = text.Split(' ');
+            if (yodaArray.Length == 3)
+            {
+                string[] trueYoda = new string[3];
+                trueYoda[0] = yodaArray[2] + ",";
+                trueYoda[1] = yodaArray[0];
+                trueYoda[2] = yodaArray[1];
+                string trueYodaTalk = string.Join(" ", trueYoda);
+                return trueYodaTalk;
+                   
+              
+            }
             Array.Reverse(yodaArray);
             string yodaTalk = string.Join(" ", yodaArray);
             return yodaTalk;
