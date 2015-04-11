@@ -27,6 +27,7 @@ namespace Week1CodeChallenge
                 }
 
             }
+            Console.WriteLine(DashInsert(454793));
             Console.ReadKey();
         }
         public static string FizzBuzz(int number)
@@ -115,7 +116,27 @@ namespace Week1CodeChallenge
         }
         public static string DashInsert(int number)
         {
-            return string.Empty;
+            string numberString = number.ToString();
+            List<char> numberList = new List<char> { };
+            for (int i = 0; i < numberString.Length; i++)
+            {
+                numberList.Add(numberString[i]);
+            }
+            for (int i = 0; i < numberString.Length; i++)
+            {
+                int previous = i - 1;
+                if (numberList[i] != 0 && i > 0)
+                {
+                    if (numberList[previous] % 2 != 0 && numberList[i] % 2 != 0)
+                    {
+                        numberList.Insert(i, '-');
+                        previous--;
+                    }
+                }
+
+            }
+            string numberDashed = string.Join("", numberList);
+            return numberDashed;
         }
     }
 }
