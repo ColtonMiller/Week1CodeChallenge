@@ -12,6 +12,7 @@ namespace Week1CodeChallenge
         {
             Console.WriteLine(Yodaizer("I like code"));
             TextStats("I think this function should work. I'm not sure what do you think? if it does, great, if not, then I need to fix it");
+            //loops from 0 to 25 to test if an odd number between is odd or not
             for (int i = 0; i <= 25; i++)
             {
                 if (i % 2 != 0)
@@ -31,6 +32,11 @@ namespace Week1CodeChallenge
             Console.WriteLine(DashInsert(8675309));
             Console.ReadKey();
         }
+        /// <summary>
+        /// returns a string (fizz if divisable by 5, buzz if divisable by 3, FizzBuzz if divisable by 3 and 5, returns number as string if not divisable)
+        /// </summary>
+        /// <param name="number">insert a veriable</param>
+        /// <returns></returns>
         public static string FizzBuzz(int number)
         {
             if (number < 0)
@@ -54,6 +60,11 @@ namespace Week1CodeChallenge
                 return number.ToString();
             }
         }
+        /// <summary>
+        /// Turns sentances into the way yoda would say them
+        /// </summary>
+        /// <param name="text">enter sentence</param>
+        /// <returns>yoda version of sentence</returns>
         public static string Yodaizer(string text)
         {
             string[] yodaArray = text.Split(' ');
@@ -72,14 +83,16 @@ namespace Week1CodeChallenge
             string yodaTalk = string.Join(" ", yodaArray);
             return yodaTalk;
         }
+        /// <summary>
+        /// Show number of characters, words, vowels, consonants, 
+        /// </summary>
+        /// <param name="input">insert any string</param>
         public static void TextStats(string input)
         {
             int counter = 0;
             int counterVowel = 0;
             int counterConsonants = 0;
             int counterSpecialChar = 0;
-            var vowel = new HashSet<char> {'a', 'e', 'i', 'o', 'u'};
-            var specialChar = new HashSet<char> { '.', ',', ' ', '?' };
 
             for (int i = 0; i < input.Length; i++)
             {
@@ -88,6 +101,7 @@ namespace Week1CodeChallenge
             Console.WriteLine("Number of characters: {0}", counter);
             
             counter = 0;
+            //splits string into an array by sperating by a space character
             string[] words = input.Split(' ');
             for (int i = 0; i < words.Length ; i++)
             {
@@ -97,10 +111,11 @@ namespace Week1CodeChallenge
             string loweredInput = input.ToLower();
             for (int i = 0; i < loweredInput.Length ; i++)
             {
-                if (char.IsLetter(loweredInput[i]) && vowel.Contains(loweredInput[i]))
+                if (char.IsLetter(loweredInput[i]) && "aeiou".Contains(loweredInput[i]))
                 {
                     counterVowel++;
                 }
+                //if it's not a vowel it must be a consonant so adds to counterConsonants
                 else if (char.IsLetter(loweredInput[i]))
                 {
                     counterConsonants++;
@@ -110,7 +125,7 @@ namespace Week1CodeChallenge
             Console.WriteLine("Number of consonants: {0}", counterConsonants);
             for (int i = 0; i < input.Length; i++)
             {
-                if (specialChar.Contains(input[i]))
+                if ("., ?".Contains(input[i]))
                 {
                     counterSpecialChar++;
                 }
@@ -118,6 +133,11 @@ namespace Week1CodeChallenge
             Console.WriteLine("Number of special characters: {0}", counterSpecialChar);
 
         }
+        /// <summary>
+        /// finds is a number is prime 
+        /// </summary>
+        /// <param name="number">integer</param>
+        /// <returns>a boolean true or false is returned</returns>
         public static bool IsPrime(int number)
         {
             for (int i = 2; i < number; i++)
@@ -130,6 +150,11 @@ namespace Week1CodeChallenge
             return true;
 
         }
+        /// <summary>
+        /// inserts dash between two odd numbers (0 not included)
+        /// </summary>
+        /// <param name="number">any integer</param>
+        /// <returns>string of the integer with dashes inserted</returns>
         public static string DashInsert(int number)
         {
             string numberString = number.ToString();
@@ -149,7 +174,7 @@ namespace Week1CodeChallenge
                         previous++;
                         i++;
                     }
-                    if (numberList[previous] % 2 != 0 && numberList[i] % 2 != 0 && char.IsDigit(numberList[previous]))
+                    if (numberList[previous] % 2 != 0 && numberList[i] % 2 != 0)
                     {
                         numberList.Insert(i, '-');
                     }
